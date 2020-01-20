@@ -17,11 +17,13 @@ if (!exists("hpc")) {
     hpc_days <- subset(hpc, hpc$Date %in% days)
 }
 
-# open png device of specified size
-png("plot1.png", width = 480, height = 480)
-hist(hpc_days$Global_active_power, 
-     xlab = "Global Active Power (killowatts)",
-     main = "Global Active Power",
-     col = "red",)
-
-dev.off()
+if (!file.exists("plot1.png")) {
+    # open png device of specified size
+    png("plot1.png", width = 480, height = 480)
+    hist(hpc_days$Global_active_power, 
+         xlab = "Global Active Power (kilowatts)",
+         main = "Global Active Power",
+         col = "red",)
+    
+    dev.off()
+}
